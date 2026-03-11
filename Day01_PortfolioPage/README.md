@@ -7,7 +7,7 @@ A responsive personal portfolio website built with HTML, CSS, and JavaScript to 
 
 ## 🚀 Live Demo
 
-You can view the live demo here: **[https://your-username.github.io/portfolio](https://shreyashkingson.github.io/Day01_PortfolioPage/index.html)**
+You can view the live demo here: **[https://shreyash-joshi01.github.io/Day01_PortfolioPage/index.html](https://shreyash-joshi01.github.io/Day01_PortfolioPage/index.html)**
 
 
 ## ✨ Features
