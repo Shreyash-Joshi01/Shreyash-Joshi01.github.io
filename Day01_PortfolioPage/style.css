@@ -1,0 +1,314 @@
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 0;
+    --mouse-x: 50%;
+    --mouse-y: 0%;
+    background:
+        radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(56, 189, 248, 0.28), transparent 55%),
+        radial-gradient(circle at top, #3d1337 0, #004567 40%, #001726 100%);
+    background-attachment: fixed;
+    color: #f9fafb;
+    transition: background-position 0.18s ease-out;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(14px);
+    background: linear-gradient(to bottom, rgba(3, 4, 10, 0.9), rgba(3, 4, 10, 0.4));
+    border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.site-header h1 {
+    margin: 0;
+    font-size: 1.4rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    color: #e5e7eb;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #38bdf8, #a855f7);
+    transition: width 0.25s ease-out;
+}
+
+nav a:hover::after,
+nav a:focus::after {
+    width: 100%;
+}
+
+main {
+    padding: 3rem 0 4rem;
+}
+
+.section {
+    margin-bottom: 4rem;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.4rem;
+    width: 3rem;
+    height: 3px;
+    background: linear-gradient(to right, #38bdf8, #a855f7);
+    border-radius: 999px;
+}
+
+.about-section {
+    margin-top: 2rem;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.about-text p {
+    line-height: 1.7;
+    color: #e5e7eb;
+    margin-bottom: 1rem;
+}
+
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 0.4rem;
+}
+
+.about-image-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    padding: 3px;
+    background: conic-gradient(from 0deg, #38bdf8, #a855f7, #22c55e, #38bdf8);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0.9;
+    animation: spin-ring 7s linear infinite;
+}
+
+.about-image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 0, rgba(248, 250, 252, 0.12), transparent 55%);
+    filter: blur(6px);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.profile-image {
+    width: 260px;
+    height: 260px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 3px solid rgba(148, 163, 184, 0.7);
+    box-shadow:
+        0 18px 40px rgba(15, 23, 42, 0.85),
+        0 0 0 1px rgba(148, 163, 184, 0.4);
+}
+
+@keyframes spin-ring {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), rgba(15, 23, 42, 0.98));
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
+    transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, border-color 0.22s ease-out;
+    cursor: default;
+}
+
+.skill-card:hover,
+.skill-card:focus-within {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 45px rgba(15, 23, 42, 0.95);
+    border-color: rgba(56, 189, 248, 0.7);
+}
+
+.skill-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+
+.skill-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-card li {
+    font-size: 0.95rem;
+    color: #e5e7eb;
+    margin-bottom: 0.25rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.project-card {
+    background: radial-gradient(circle at top right, rgba(168, 85, 247, 0.18), rgba(15, 23, 42, 0.98));
+    border-radius: 1rem;
+    padding: 1.5rem 1.6rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    box-shadow: 0 18px 35px rgba(15, 23, 42, 0.85);
+    transition: transform 0.22s ease-out, box-shadow 0.22s ease-out, border-color 0.22s ease-out;
+    cursor: default;
+}
+
+.project-card:hover,
+.project-card:focus-within {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 24px 45px rgba(15, 23, 42, 0.95);
+    border-color: rgba(168, 85, 247, 0.7);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+.project-card p {
+    margin: 0 0 0.6rem;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+.project-tags {
+    font-size: 0.85rem;
+    color: #a5b4fc;
+}
+
+.contact-section p {
+    line-height: 1.7;
+    color: #e5e7eb;
+}
+
+a {
+    color: #38bdf8;
+}
+
+a:hover,
+a:focus {
+    color: #a5b4fc;
+}
+
+.site-footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+    padding: 1.25rem 0 1.75rem;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    background: radial-gradient(circle at bottom, rgba(15, 23, 42, 0.8), rgba(3, 7, 18, 0.95));
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .about-image-wrapper {
+        order: -1;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-image {
+        width: 220px;
+        height: 220px;
+    }
+
+    main {
+        padding-top: 2.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header h1 {
+        font-size: 1.15rem;
+    }
+
+    .section h2 {
+        font-size: 1.6rem;
+    }
+}

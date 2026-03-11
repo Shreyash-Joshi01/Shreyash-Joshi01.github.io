@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreyash's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <h1>Shreyash Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about" class="section about-section">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>Hello! I'm Shreyash, a passionate web developer with a love for creating beautiful and functional digital experiences. I work with HTML, CSS, JavaScript, and modern libraries like React to build responsive, user-friendly interfaces.</p>
+                    <p>I enjoy solving real-world problems through code, writing clean and maintainable front-end architectures, and continuously learning new technologies to improve my craft.</p>
+                </div>
+                <div class="about-image-wrapper">
+                    <img src="assets/me2.jpeg" alt="Portrait of Shreyash" class="profile-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML5</li>
+                        <li>CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React</li>
+                        <li>Bootstrap</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>Node.js</li>
+                        <li>Express.js</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Database</h3>
+                    <ul>
+                        <li>MongoDB</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Version Control</h3>
+                    <ul>
+                        <li>Git</li>
+                        <li>GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Personal Portfolio Website</h3>
+                    <p>Responsive portfolio built with HTML, CSS, and JavaScript to showcase projects, skills, and experience with a clean, modern layout.</p>
+                    <p class="project-tags">HTML • CSS • JavaScript</p>
+                </article>
+                <article class="project-card">
+                    <h3>E-commerce Website</h3>
+                    <p>Full-stack e-commerce application with product browsing, cart management, and checkout flow, designed for a smooth shopping experience.</p>
+                    <p class="project-tags">React • Node.js • Express • REST APIs</p>
+                </article>
+                <article class="project-card">
+                    <h3>Social Media App</h3>
+                    <p>MERN stack social media platform where users can create profiles, share posts, and connect with friends in real time.</p>
+                    <p class="project-tags">MongoDB • Express • React • Node.js</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <h2>Contact</h2>
+            <p>You can reach me at <a href="mailto:shreyashsj525@gmail.com">shreyashsj525@gmail.com</a>.</p>
+            <p>Feel free to connect with me on
+                <a href="https://www.linkedin.com/in/shreyash-joshi-742979269" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                or
+                <a href="https://github.com/Shreyashkingson" target="_blank" rel="noopener noreferrer">GitHub</a>.
+            </p>
+            <p>Thank you for visiting my portfolio!</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="year"></span> Shreyash. All rights reserved.</p>
+        </div>
+        <script>
+            const yearSpan = document.getElementById('year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Cursor-following background glow
+            window.addEventListener('pointermove', (event) => {
+                const x = (event.clientX / window.innerWidth) * 100;
+                const y = (event.clientY / window.innerHeight) * 100;
+                document.body.style.setProperty('--mouse-x', x + '%');
+                document.body.style.setProperty('--mouse-y', y + '%');
+            });
+        </script>
+    </footer>
+</body>
+</html>
