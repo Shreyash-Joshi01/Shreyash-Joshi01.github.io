@@ -7,7 +7,7 @@ A responsive personal portfolio website built with HTML, CSS, and JavaScript to 
 
 ## 🚀 Live Demo
 
-You can view the live demo here: **[https://your-username.github.io/portfolio](https://your-username.github.io/portfolio)**
+You can view the live demo here: **[https://your-username.github.io/portfolio](https://shreyashkingson.github.io/Day01_PortfolioPage/index.html)**
 
 
 ## ✨ Features
@@ -47,19 +47,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-You just need a modern web browser (like Chrome, Firefox, or Edge).
-
-### Installation & Setup
-
-1.  Clone the repository to your local machine:
-    ```sh
-    git clone https://github.com/your-username/portfolio.git
-    ```
-2.  Navigate to the project directory:
-    ```sh
-    cd portfolio
-    ```
-3.  Open the `index.html` file in your browser.
+You just need a modern web browser (like Chrome, Firefox, or Edge)
 
 ## 📄 License
 

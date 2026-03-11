@@ -1,314 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="A curated dashboard of my 100 web development micro-projects with live demos."
-    />
-    <title>Web Dev Microprojects — Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body id="top">
-    <a class="skip-link" href="#projects">Skip to projects</a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DevVault — Shreyash Joshi's daily web projects. Live demos hosted on GitHub Pages." />
+  <meta property="og:title" content="DevVault · Daily Builds by Shreyash Joshi" />
+  <meta property="og:description" content="100 micro web projects. Built daily. Deployed live." />
+  <title>DevVault · Daily Builds</title>
 
-    <header class="topbar">
-      <div class="container topbar__inner">
-        <div class="brand">
-          <div class="brand__mark" aria-hidden="true">S</div>
-          <div class="brand__text">
-            <div class="brand__title">Microprojects</div>
-            <div class="brand__subtitle">100 Web Dev Projects • Live demos</div>
-          </div>
-        </div>
+  <!-- Fonts & Icons from Stitch & Prompt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-        <div class="topbar__actions">
-          <a class="btn btn--ghost" href="https://github.com/" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <button class="btn btn--primary" id="themeToggle" type="button">
-            Toggle theme
-          </button>
-        </div>
+  <!-- The core stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Use a placeholder SVG for now until assets/favicon.svg is created -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+</head>
+<body class="dark-theme">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo">
+      <span class="material-symbols-outlined logo-icon">architecture</span>
+      <span class="logo-text">DevVault</span>
+    </div>
+    
+    <div class="nav-search-container">
+      <label class="nav-search-wrap">
+        <span class="material-symbols-outlined search-icon">search</span>
+        <input type="search" id="navSearch" placeholder="Search Vault..." />
+      </label>
+    </div>
+
+    <div class="nav-right">
+      <span class="project-count" id="navCount">— projects</span>
+      <a href="https://github.com/shreyash-joshi01" target="_blank" class="btn-github">
+        <span class="material-symbols-outlined">code</span> Code
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <!-- Abstract Canvas Background Simulation -->
+    <div class="hero-glow"></div>
+    <canvas id="heroCanvas"></canvas>
+    
+    <div class="hero-content">
+      <div class="hero-status-pill">
+        <span class="status-dot">
+          <span class="ping"></span>
+          <span class="dot-core"></span>
+        </span>
+        System Online
       </div>
-    </header>
-
-    <main class="container">
-      <section class="hero" aria-label="Dashboard overview">
-        <div class="hero__left">
-          <h1 class="hero__title">Recruiter-friendly project dashboard</h1>
-          <p class="hero__desc">
-            Each card opens a <strong>live demo</strong> hosted on GitHub Pages. Use search to
-            quickly find a project by name, tech, or keyword.
-          </p>
-
-          <div class="hero__meta">
-            <div class="chip" id="statTotal" aria-live="polite">0 projects</div>
-            <div class="chip chip--subtle" id="statVisible" aria-live="polite">0 shown</div>
-            <a class="chip chip--link" href="#projects">Browse ↓</a>
-          </div>
-
-          <div class="hero__cta">
-            <a class="btn btn--primary" href="#projects">View projects</a>
-            <a class="btn btn--ghost" href="#projects">Quick browse</a>
-          </div>
-        </div>
-
-        <div class="hero__right" aria-hidden="true">
-          <div class="preview">
-            <div class="preview__bar">
-              <span class="dot dot--red"></span>
-              <span class="dot dot--yellow"></span>
-              <span class="dot dot--green"></span>
-              <span class="preview__title">Live demos</span>
-            </div>
-            <div class="preview__body">
-              <div class="preview__line w-70"></div>
-              <div class="preview__line w-95"></div>
-              <div class="preview__line w-80"></div>
-              <div class="preview__grid">
-                <div class="preview__card"></div>
-                <div class="preview__card"></div>
-                <div class="preview__card"></div>
-                <div class="preview__card"></div>
-                <div class="preview__card"></div>
-                <div class="preview__card"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="controls" aria-label="Project controls">
-        <div class="controls__row">
-          <label class="field">
-            <span class="field__label">Search</span>
-            <div class="field__inputWrap">
-              <input
-                id="searchInput"
-                class="field__input"
-                type="search"
-                placeholder="e.g. todo, api, css, game…"
-                autocomplete="off"
-              />
-              <button class="iconBtn" id="clearSearch" type="button" aria-label="Clear search">
-                ×
-              </button>
-            </div>
-          </label>
-
-          <label class="field">
-            <span class="field__label">Filter</span>
-            <select id="tagFilter" class="field__select">
-              <option value="all">All tags</option>
-            </select>
-          </label>
-
-          <label class="field">
-            <span class="field__label">Sort</span>
-            <select id="sortBy" class="field__select">
-              <option value="newest">Newest first</option>
-              <option value="oldest">Oldest first</option>
-              <option value="title">Title A → Z</option>
-            </select>
-          </label>
-        </div>
-        <p class="controls__hint">
-          Tip: keep projects in folders like <code>project-01/</code>, <code>project-02/</code>…
-          and ensure each has its own <code>index.html</code>.
-        </p>
-      </section>
-
-      <section id="projects" class="projects" aria-label="Projects list">
-        <div class="sectionHead">
-          <h2 class="sectionHead__title">Projects</h2>
-          <p class="sectionHead__desc" id="resultSummary">Showing 0 projects</p>
-        </div>
-
-        <div id="projectGrid" class="grid" role="list"></div>
-
-        <div id="emptyState" class="empty" hidden>
-          <div class="empty__title">No matches</div>
-          <div class="empty__desc">Try a different search term or filter.</div>
-          <button class="btn btn--ghost" id="resetAll" type="button">Reset</button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <div class="footer__left">
-          <div class="footer__title">Built for fast reviewing</div>
-          <div class="footer__desc">
-            One clean landing page + 100 live demos on GitHub Pages.
-          </div>
-        </div>
-        <div class="footer__right">
-          <a class="footer__link" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;"
-            >Back to top</a
-          >
-        </div>
+      
+      <h1 class="hero-headline">Every project.<br />Deployed live.</h1>
+      
+      <p class="hero-sub">
+        A premium digital archive of open-source microprojects.<br/>
+        Explore, analyze, and deploy high-quality components.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="#projects" class="btn-primary">Explore Vault</a>
       </div>
-    </footer>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
 
-    <script>
-      /**
-       * Edit this list as you add projects.
-       * - folder should match a folder at repo root, each containing its own index.html
-       * - live will be generated as `./${folder}/`
-       */
-      const PROJECTS = [
-        {
-          id: 1,
-          title: "Portfolio Landing Page",
-          desc: "Clean personal landing page with responsive layout.",
-          tags: ["HTML", "CSS"],
-          folder: "Day01_PortfolioPage",
-          source: "",
-          date: "2026-03-11",
-        },
-        // Add more like:
-        // { id: 2, title: "Todo App", desc: "CRUD todos with localStorage.", tags: ["JS"], folder: "project-02", source: "", date: "2026-03-12" },
-      ];
+  <!-- STATS BAR -->
+  <section class="stats-bar-wrapper">
+    <div class="stats-inner">
+      <div class="stats-glow-line"></div>
+      
+      <div class="stat-card">
+        <div class="stat-hover-glow"></div>
+        <span class="stat-label">Total Projects</span>
+        <span class="stat-number" data-target="1" id="statTotal">0</span>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-hover-glow"></div>
+        <span class="stat-label">Live Demos</span>
+        <span class="stat-number" data-target="1" id="statLive">0</span>
+      </div>
+      
+      <div class="stat-card">
+        <div class="stat-hover-glow"></div>
+        <span class="stat-label">Days Active</span>
+        <span class="stat-number" data-target="1" id="statDays">0</span>
+      </div>
+    </div>
+  </section>
 
-      const els = {
-        grid: document.getElementById("projectGrid"),
-        search: document.getElementById("searchInput"),
-        clear: document.getElementById("clearSearch"),
-        filter: document.getElementById("tagFilter"),
-        sort: document.getElementById("sortBy"),
-        total: document.getElementById("statTotal"),
-        visible: document.getElementById("statVisible"),
-        summary: document.getElementById("resultSummary"),
-        empty: document.getElementById("emptyState"),
-        reset: document.getElementById("resetAll"),
-        themeToggle: document.getElementById("themeToggle"),
-      };
+  <!-- PROJECT GRID -->
+  <section class="projects-section" id="projects">
+    <div class="filters-row">
+      <h2 class="section-title">
+        <span class="material-symbols-outlined">folder_special</span>
+        Project Vault
+      </h2>
+      
+      <div class="filter-controls">
+        <div class="search-wrap main-search">
+          <span class="material-symbols-outlined">search</span>
+          <input type="search" id="projectSearch" placeholder="Search by name, tech..." />
+        </div>
+        
+        <select id="tagFilter" class="filter-select">
+          <option value="">All tags</option>
+          <option value="HTML">HTML</option>
+          <option value="CSS">CSS</option>
+          <option value="JS">JavaScript</option>
+          <option value="React">React</option>
+          <option value="Canvas">Canvas</option>
+          <option value="Three.js">Three.js</option>
+        </select>
+        
+        <select id="sortOrder" class="filter-select hidden">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="az">A → Z</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="results-meta">
+      <span id="resultsCount">Showing 0 projects</span>
+    </div>
+    
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Cards injected by JS -->
+    </div>
+    
+    <div class="load-more-container">
+      <button id="loadMore" class="btn-ghost group">
+        Load More Entries
+        <span class="material-symbols-outlined">expand_more</span>
+      </button>
+    </div>
+  </section>
 
-      const storageKey = "mp_theme";
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="material-symbols-outlined">copyright</span>
+        <span>2026 DevVault. All systems nominal.</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/shreyash-joshi01" target="_blank">Terms</a>
+        <a href="https://github.com/shreyash-joshi01" target="_blank">Privacy</a>
+        <a href="https://github.com/shreyash-joshi01" target="_blank">Status</a>
+      </div>
+    </div>
+  </footer>
 
-      function setTheme(mode) {
-        document.documentElement.dataset.theme = mode;
-        localStorage.setItem(storageKey, mode);
-      }
-
-      function initTheme() {
-        const saved = localStorage.getItem(storageKey);
-        if (saved) return setTheme(saved);
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        setTheme(prefersDark ? "dark" : "light");
-      }
-
-      function uniqTags(list) {
-        const set = new Set();
-        for (const p of list) for (const t of p.tags || []) set.add(t);
-        return [...set].sort((a, b) => a.localeCompare(b));
-      }
-
-      function populateTags() {
-        const tags = uniqTags(PROJECTS);
-        for (const tag of tags) {
-          const opt = document.createElement("option");
-          opt.value = tag;
-          opt.textContent = tag;
-          els.filter.appendChild(opt);
-        }
-      }
-
-      function normalize(str) {
-        return (str || "").toLowerCase().trim();
-      }
-
-      function matches(p, q, tag) {
-        const inTag = tag === "all" || (p.tags || []).includes(tag);
-        if (!inTag) return false;
-        if (!q) return true;
-        const haystack = [p.title, p.desc, ...(p.tags || []), p.folder].map(normalize).join(" ");
-        return haystack.includes(q);
-      }
-
-      function sortProjects(list, mode) {
-        const copy = [...list];
-        if (mode === "title") return copy.sort((a, b) => a.title.localeCompare(b.title));
-        if (mode === "oldest") return copy.sort((a, b) => new Date(a.date) - new Date(b.date));
-        return copy.sort((a, b) => new Date(b.date) - new Date(a.date));
-      }
-
-      function card(p) {
-        // Point directly to index.html so it works on local file:// and GitHub Pages.
-        const live = `./${p.folder}/index.html`;
-        const tags = (p.tags || []).map((t) => `<span class="tag">${t}</span>`).join("");
-        const sourceBtn = p.source
-          ? `<a class="btn btn--ghost btn--sm" href="${p.source}" target="_blank" rel="noreferrer">Source</a>`
-          : `<span class="btn btn--ghost btn--sm btn--disabled" aria-disabled="true">Source</span>`;
-
-        return `
-          <article class="card" role="listitem">
-            <div class="card__top">
-              <div class="card__titleRow">
-                <h3 class="card__title">${p.title}</h3>
-                <span class="card__id">#${String(p.id).padStart(2, "0")}</span>
-              </div>
-              <p class="card__desc">${p.desc}</p>
-            </div>
-            <div class="card__tags" aria-label="Tags">${tags}</div>
-            <div class="card__bottom">
-              <a class="btn btn--primary btn--sm" href="${live}" target="_blank" rel="noreferrer">Live demo</a>
-              ${sourceBtn}
-              <a class="btn btn--ghost btn--sm" href="${live}" aria-label="Open ${p.folder} demo">${p.folder}</a>
-            </div>
-          </article>
-        `;
-      }
-
-      function render() {
-        const q = normalize(els.search.value);
-        const tag = els.filter.value;
-        const sorted = sortProjects(PROJECTS, els.sort.value);
-        const filtered = sorted.filter((p) => matches(p, q, tag));
-
-        els.grid.innerHTML = filtered.map(card).join("");
-
-        els.total.textContent = `${PROJECTS.length} projects`;
-        els.visible.textContent = `${filtered.length} shown`;
-        els.summary.textContent = `Showing ${filtered.length} of ${PROJECTS.length} projects`;
-
-        const isEmpty = filtered.length === 0;
-        els.empty.hidden = !isEmpty;
-      }
-
-      function bind() {
-        els.search.addEventListener("input", render);
-        els.clear.addEventListener("click", () => {
-          els.search.value = "";
-          els.search.focus();
-          render();
-        });
-        els.filter.addEventListener("change", render);
-        els.sort.addEventListener("change", render);
-        els.reset.addEventListener("click", () => {
-          els.search.value = "";
-          els.filter.value = "all";
-          els.sort.value = "newest";
-          render();
-        });
-        els.themeToggle.addEventListener("click", () => {
-          const current = document.documentElement.dataset.theme || "light";
-          setTheme(current === "dark" ? "light" : "dark");
-        });
-      }
-
-      initTheme();
-      populateTags();
-      bind();
-      render();
-    </script>
-  </body>
+  <!-- Scripts -->
+  <script src="three.min.js"></script>
+  <script src="tilt.js"></script>
+  <script src="data/projects.js"></script>
+  <script src="main.js"></script>
+</body>
 </html>
