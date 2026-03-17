@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherCast - Day 03</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-default">
+    <!-- Dynamic background overlay for image class -->
+    <div class="bg-overlay"></div>
+    <div class="glass-overlay"></div>
+
+    <main class="app-container">
+        
+        <!-- Search Bar at the top (added for usability even though it wasn't in the specific mockup segment) -->
+        <header class="top-bar">
+            <div class="search-box">
+                <i class='bx bx-search'></i>
+                <input type="text" placeholder="Search city..." id="search-input">
+                <button id="location-btn"><i class='bx bx-current-location'></i></button>
+            </div>
+            <div class="brand">weather.com</div>
+        </header>
+
+        <div class="content-wrapper">
+            <!-- Left Section - Main Weather -->
+            <section class="current-weather">
+                <div class="weather-main-info">
+                    <div class="temp-group">
+                        <h1 id="temp-main">--<span class="degree">&deg;C</span></h1>
+                        <!-- Will hold dynamic icons based on OpenWeather -->
+                        <img src="" alt="Weather Icon" id="weather-icon-main" class="weather-icon" style="display:none;">
+                    </div>
+                    
+                    <h2 id="city-name">Loading...</h2>
+                    
+                    <div class="time-hi-lo">
+                        <span id="current-time">--:--</span> | 
+                        <span id="temp-high">H:--&deg;</span> 
+                        <span id="temp-low">L:--&deg;</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Section - Details & Forecast -->
+            <section class="weather-details">
+                <!-- Hourly Forecast -->
+                <div class="detail-card hourly-card">
+                    <h3 id="hourly-desc">Fetching forecast...</h3>
+                    <div class="hourly-list" id="hourly-list">
+                        <!-- Injected via JS -->
+                        <!-- Example:
+                        <div class="hourly-item">
+                            <span>Now</span>
+                            <img src="..." />
+                            <span>23°</span>
+                        </div>
+                        -->
+                    </div>
+                </div>
+
+                <!-- 5-Day Forecast -->
+                <div class="detail-card daily-card">
+                    <h3>5-Day Forecast</h3>
+                    <div class="forecast-list" id="forecast-list">
+                        <!-- Injected via JS -->
+                        <!-- Example:
+                        <div class="forecast-item">
+                            <span class="day">Today</span>
+                            <img src="..." />
+                            <span class="low">18°</span>
+                            <div class="temp-bar-container"><div class="temp-bar"></div></div>
+                            <span class="high">32°</span>
+                        </div>
+                        -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
